@@ -32,23 +32,23 @@ try:
         log_time("Opening OdiLeague URL...")
         driver.get(url)
 
-        # Wait for page to load and for the virtual-timer elements to appear
+        # Wait for page to load and for the ss elements to appear
         WebDriverWait(driver, 15).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "virtual-timer"))
+            EC.presence_of_element_located((By.CLASS_NAME, "ss"))
         )
 
-        virtual_timer_elements = driver.find_elements(By.CLASS_NAME, "virtual-timer")
+        ss_elements = driver.find_elements(By.CLASS_NAME, "ss")
 
-        if virtual_timer_elements:
-            log_time(f"Found {len(virtual_timer_elements)} virtual-timer elements.")
+        if ss_elements:
+            log_time(f"Found {len(ss_elements)} ss elements.")
             current_class_names = []
 
-            for index, element in enumerate(virtual_timer_elements, start=1):
-                time_text = element.text.strip()
+            for index, element in enumerate(ss_elements, start=1):
+                element_text = element.text.strip()
                 class_names = element.get_attribute("class").strip()
                 current_class_names.append(class_names)
 
-                log_time(f"Element {index}: Time: {time_text}, Class Names: {class_names}")
+                log_time(f"Element {index}: Text: {element_text}, Class Names: {class_names}")
 
             # Compare with previous
             if last_class_names and current_class_names != last_class_names:
@@ -59,7 +59,7 @@ try:
             # Update last seen class names
             last_class_names = current_class_names
         else:
-            log_time("No virtual-timer elements found.")
+            log_time("No ss elements found.")
 
         log_time("Waiting 2 minutes before next check...\n")
         time.sleep(120)  # Wait 2 minutes
