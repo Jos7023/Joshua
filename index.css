@@ -1,0 +1,18 @@
+body{
+    background-color: #2515b9;
+}
+table{
+    th {
+        background-color: brown;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    td{
+        background-color:rgba(255, 255, 255, 0.932);
+        border: 1px solid black;
+        border-collapse: collapse;
+
+    }
+    border: 1px solid black;
+    border-collapse: collapse;
+}
